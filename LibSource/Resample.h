@@ -78,8 +78,8 @@ private:
   const size_t factor;
 public:
   UpSampler(BiquadFilter* filter, int factor=4): filter(filter), factor(factor) {}
-  static UpSampler* create(int stages, int factor=4){
-    BiquadFilter* filter = BiquadFilter::create(stages);
+  static UpSampler* create(float sr, int stages, int factor=4){
+    BiquadFilter* filter = BiquadFilter::create(sr, stages);
     // [B, A]=cheby1(2, 2, 0.25); then use [B, -A(2:end)] , note the minus sign in front of the A coefficients!!!!
     //alternatively, we could use FilterStage to compute the coefficients
     float upCoeffs[5]= {0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};
@@ -116,8 +116,8 @@ private:
   const size_t factor;
 public:
   DownSampler(BiquadFilter* filter, int factor=4): filter(filter), factor(factor) {}
-  static DownSampler* create(int stages, int factor=4){
-    BiquadFilter* filter = BiquadFilter::create(stages);
+  static DownSampler* create(float sr, int stages, int factor=4){
+    BiquadFilter* filter = BiquadFilter::create(sr, stages);
     // [B, A]=cheby1(2, 2, 0.25); then use [B, -A(2:end)] , note the minus sign in front of the A coefficients!!!!
     //alternatively, we could use FilterStage to compute the coefficients
     static float downCoeffs[5]={0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};

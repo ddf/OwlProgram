@@ -86,7 +86,7 @@ public:
     //for(int n=0; n<3; n++)
     //  upCoeffs[n] *= factor; //compensate for the gain loss due to zero-stuffing, gives unitary gain after upsampling
     //filter->copyCoefficients(FloatArray(upCoeffs, 5));
-    filter->setLowShelf(sr / factor * 0.5f, 0.0f);
+    filter->setLowPass(sr / factor * 0.5f, 0.0f);
     return new UpSampler(filter, factor);
   }
   static void destroy(UpSampler* obj){
@@ -123,7 +123,7 @@ public:
     //alternatively, we could use FilterStage to compute the coefficients
     //static float downCoeffs[5]={0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};
     //filter->copyCoefficients(FloatArray(downCoeffs,5));
-    filter->setLowShelf(sr / factor * 0.5f, 0.0f);
+    filter->setLowPass(sr / factor * 0.5f, 0.0f);
     return new DownSampler(filter, factor);
   }
   static void destroy(DownSampler* obj){

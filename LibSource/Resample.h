@@ -82,11 +82,10 @@ public:
     BiquadFilter* filter = BiquadFilter::create(sr, stages);
     // [B, A]=cheby1(2, 2, 0.25); then use [B, -A(2:end)] , note the minus sign in front of the A coefficients!!!!
     //alternatively, we could use FilterStage to compute the coefficients
-    //float upCoeffs[5]= {0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};
-    //for(int n=0; n<3; n++)
-    //  upCoeffs[n] *= factor; //compensate for the gain loss due to zero-stuffing, gives unitary gain after upsampling
-    //filter->copyCoefficients(FloatArray(upCoeffs, 5));
-    filter->setLowShelf(sr / factor * 0.5f, 0.0f);
+    float upCoeffs[5]= {0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};
+    for(int n=0; n<3; n++)
+      upCoeffs[n] *= factor; //compensate for the gain loss due to zero-stuffing, gives unitary gain after upsampling
+    filter->copyCoefficients(FloatArray(upCoeffs, 5));
     return new UpSampler(filter, factor);
   }
   static void destroy(UpSampler* obj){
@@ -121,9 +120,8 @@ public:
     BiquadFilter* filter = BiquadFilter::create(sr, stages);
     // [B, A]=cheby1(2, 2, 0.25); then use [B, -A(2:end)] , note the minus sign in front of the A coefficients!!!!
     //alternatively, we could use FilterStage to compute the coefficients
-    //static float downCoeffs[5]={0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};
-    //filter->copyCoefficients(FloatArray(downCoeffs,5));
-    filter->setLowShelf(sr / factor * 0.5f, 0.0f);
+    static float downCoeffs[5]={0.07609109, 0.15218218, 0.07609109, +1.16511283,  -0.54828486};
+    filter->copyCoefficients(FloatArray(downCoeffs,5));
     return new DownSampler(filter, factor);
   }
   static void destroy(DownSampler* obj){

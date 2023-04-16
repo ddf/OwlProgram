@@ -18,7 +18,7 @@ public:
   virtual void gate(bool state){
     gate(state, 0);
   }
-  virtual void gate(bool state, int gateDelay){}
+  virtual void gate(bool state, int gateDelay) { (void)state; (void)gateDelay; }
   virtual float process(float input){
     return input*generate();
   }

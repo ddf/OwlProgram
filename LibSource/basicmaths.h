@@ -31,7 +31,10 @@
 using std::min;
 using std::max;
 using std::abs;
-using std::clamp;
+//using std::clamp;
+#ifndef clamp
+#define clamp(x, lo, hi) ((x)>(hi)?(hi):((x)<(lo)?(lo):(x)))
+#endif
 #else
 #include <math.h>
 #ifndef min

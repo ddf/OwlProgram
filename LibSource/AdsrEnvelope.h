@@ -75,10 +75,10 @@ public:
    * Produce the next envelope sample.
    */
   float generate(){
-    if(gateTime == 0){
+    if(gateTime == 0 && gateState){
       stage = kAttack;
       if(trig == kTrigger){
-	gateState = false;
+        gateState = false;
       }
     }
     if(gateTime >= 0){
@@ -89,49 +89,49 @@ public:
       // attack ramp
       level = increment(level, attackIncrement);
       if(level >= 1.0){
-	level = 1.0;
-	stage = kDecay;
+        level = 1.0;
+        stage = kDecay;
       }else if(gateState == false && trig == kGate){
-	stage = kRelease;
+        stage = kRelease;
       }
       break;
     case kDecay:
       // decay ramp
       level = decrement(level, decayIncrement);
       if(level <= sustain){
-	level = sustain;
-	if(trig == kGate){
-	  stage = kSustain;
-	} else { // (trig == kTrigger)
-	  stage = kRelease;
-	}
+        level = sustain;
+        if(trig == kGate){
+          stage = kSustain;
+        } else { // (trig == kTrigger)
+          stage = kRelease;
+        }
       } else if(gateState == false && trig == kGate){
-	stage = kRelease;
+        stage = kRelease;
       }
       break;
     case kSustain:
       level = sustain;
       if(gateState == false){
-	stage = kRelease;
+        stage = kRelease;
       }
       break;
     case kRelease:
       // release ramp
       level = decrement(level, releaseIncrement);
       if(level <= MINLEVEL){
-	level = MINLEVEL;
-	if (retrigger == true)
-	  trigger();
-	else // (retrigger == false)
-	  stage = kIdle;
+        level = MINLEVEL;
+        if (retrigger == true)
+          trigger();
+        else // (retrigger == false)
+          stage = kIdle;
       }else if(gateState == true ){ // if during release the gate is on again, start over from the current level
-	stage = kAttack;
+        stage = kAttack;
       }
       break;
     case kIdle:
       level = MINLEVEL;
       if(gateState == true)
-	stage = kAttack;
+        stage = kAttack;
       break;
     }
     return level;

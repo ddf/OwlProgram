@@ -17,7 +17,7 @@ public:
   /**
    * Set oscillator sample rate
    */
-  virtual void setSampleRate(float value){}
+  virtual void setSampleRate(float value) { (void)value; }
   /**
    * Set oscillator frequency in Hertz
    */

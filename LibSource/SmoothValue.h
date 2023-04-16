@@ -126,9 +126,9 @@ private:
 public:
   SmoothStiffValue(){}
   SmoothStiffValue(T l, T d)
-    : lambda(d), delta(d){}
+    : lambda(l), delta(d){}
   SmoothStiffValue(T l, T d, T initialValue)
-    : lambda(d), delta(d), value(initialValue) {}
+    : lambda(l), delta(d), value(initialValue) {}
   void update(T newValue);
   void reset(T newValue){
     value = newValue;

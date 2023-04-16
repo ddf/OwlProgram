@@ -54,9 +54,13 @@ float powFastLookup
    const int32_t i = (int32_t)( (val * (_2p23 * ilog2)) + (127.0f * _2p23) );
 
    /* replace mantissa with lookup */
-   const int32_t it = (i & 0xFF800000) | pTable[(i & 0x7FFFFF) >>        /* E */
-      (23 - precision)];                                             /* F */
+   const union { const int32_t it; const float f; } u =
+   {
+     (i & 0xFF800000) | pTable[(i & 0x7FFFFF) >>        /* E */
+     (23 - precision)]                                  /* F */
+   };
 
    /* convert bits to float */
-   return *(const float*)( &it );
+   //return *(const float*)( &it );
+   return u.f;
 }

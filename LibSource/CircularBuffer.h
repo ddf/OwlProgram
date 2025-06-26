@@ -221,13 +221,13 @@ public:
     setAll(0);
   }
 
-  static CircularBuffer<DataType>* create(IndexType len){
-    CircularBuffer<DataType>* obj = new CircularBuffer<DataType>(new DataType[len], len);
+  static CircularBuffer* create(IndexType len){
+    CircularBuffer* obj = new CircularBuffer(new DataType[len], len);
     obj->clear();
     return obj;
   }
 
-  static void destroy(CircularBuffer<DataType>* obj){
+  static void destroy(const CircularBuffer* obj){
     delete[] obj->data;
     delete obj;
   }

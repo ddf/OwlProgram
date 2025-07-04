@@ -15,7 +15,8 @@ class MonochromeScreenPatch : public Patch {
 public:
   MonochromeScreenPatch();
   virtual ~MonochromeScreenPatch();
-  uint16_t getScreenWidth();
-  uint16_t getScreenHeight();
+  // DQ: these are not defined and the values are not known until the first draw callback.
+  //uint16_t getScreenWidth();
+  //uint16_t getScreenHeight();
   virtual void processScreen(MonochromeScreenBuffer& screen) = 0;
 };

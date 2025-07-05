@@ -20,6 +20,7 @@ public:
   operator T(){
     return getValue();
   }
+  int id() const { return pid; }
 };
 
 typedef PatchParameter<float> FloatParameter;

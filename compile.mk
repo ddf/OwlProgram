@@ -10,6 +10,10 @@ ifeq ($(CONFIG),Release)
 CPPFLAGS    ?= -O3 -ffast-math -DNDEBUG
 endif
 
+ifdef MODULE
+CPPFLAGS    += -DOWL_$(MODULE)
+endif
+
 # Code Paths
 SOURCE       = $(BUILDROOT)/Source
 LIBSOURCE    = $(BUILDROOT)/LibSource

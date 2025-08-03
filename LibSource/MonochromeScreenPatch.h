@@ -1,3 +1,6 @@
+#ifndef __MonochromeScreenPatch_h__
+#define __MonochromeScreenPatch_h__
+
 #include "Patch.h"
 #include "ScreenBuffer.h"
 
@@ -20,3 +23,5 @@ public:
   //uint16_t getScreenHeight();
   virtual void processScreen(MonochromeScreenBuffer& screen) = 0;
 };
+
+#endif

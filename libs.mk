@@ -54,6 +54,7 @@ C_SRC += $(DSPLIB)/BasicMathFunctions/arm_mult_f32.c
 C_SRC += $(DSPLIB)/BasicMathFunctions/arm_negate_f32.c
 C_SRC += $(DSPLIB)/BasicMathFunctions/arm_scale_f32.c
 C_SRC += $(DSPLIB)/BasicMathFunctions/arm_sub_f32.c
+C_SRC += $(DSPLIB)/BasicMathFunctions/arm_offset_f32.c
 
 C_SRC += $(DSPLIB)/StatisticsFunctions/arm_max_f32.c
 C_SRC += $(DSPLIB)/StatisticsFunctions/arm_mean_f32.c

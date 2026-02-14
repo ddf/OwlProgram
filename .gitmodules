@@ -6,6 +6,3 @@
 	path = Tools/hvcc
 	url = https://github.com/pingdynasty/hvcc.git
 	branch = develop
-[submodule "Libraries/vessl"]
-	path = Libraries/vessl
-	url = https://github.com/ddf/vessl

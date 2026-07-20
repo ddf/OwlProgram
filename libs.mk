@@ -15,6 +15,7 @@ C_SRC += $(DSPLIB)/ComplexMathFunctions/arm_cmplx_mult_real_f32.c
 C_SRC += $(DSPLIB)/TransformFunctions/arm_cfft_f32.c
 C_SRC += $(DSPLIB)/TransformFunctions/arm_cfft_radix8_f32.c
 C_SRC += $(DSPLIB)/TransformFunctions/arm_rfft_fast_f32.c
+C_SRC += $(DSPLIB)/TransformFunctions/arm_rfft_fast_init_f32.c
 C_SRC += $(DSPLIB)/TransformFunctions/arm_rfft_init_q15.c
 C_SRC += $(DSPLIB)/TransformFunctions/arm_rfft_q15.c
 C_SRC += $(DSPLIB)/TransformFunctions/arm_cfft_q15.c

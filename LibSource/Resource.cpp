@@ -70,8 +70,3 @@ size_t Resource::read(void* dest, size_t len, size_t offset){
     return len;
   }
 }
-
-extern "C" {
-#include "syscalls/libnosys_gnu.c"
-#include "sbrk.c"
-}

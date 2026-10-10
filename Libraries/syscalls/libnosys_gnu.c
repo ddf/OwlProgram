@@ -79,7 +79,7 @@ int _isatty(int fildes)
   return 1;
 }
 
-int _link(char *old, char *new)
+int _link(char *old, char *newb)
 {
   errno = EMLINK;
   return -1;
